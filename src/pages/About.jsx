@@ -1,6 +1,6 @@
 import React from "react";
 // import { ReactDOM } from "react-dom/client";
-import bgImg from "./assets/image-53.png";
+import bgImg from "../assets/image-53.png";
 import { Link } from "react-router-dom"
 
 export default function About(){
