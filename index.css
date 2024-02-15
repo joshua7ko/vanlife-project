@@ -127,9 +127,26 @@ body::-webkit-scrollbar {
   
   
   /*** ABOUT PAGE ***/
+
+  .about-page-container {
+     display: flex; 
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+  }
+
+
   .about-hero-image {
       max-width: 100%;
+      height:30%;
+      display: flex;
+      top: 50%;
+      left: 50%;
+      
+      
   }
+
+  
   
   .about-page-content {
       padding-inline: 23px;
