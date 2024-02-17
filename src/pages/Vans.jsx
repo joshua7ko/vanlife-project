@@ -30,16 +30,27 @@ export default function Vans(){
           .then(res => res.json())
           .then(data => setVans(data.vans))
     }, [])
+
+    /**
+ * Challenge: Wrap the contents of the "van-tile" div in a 
+ * Link that sends the user to `/vans/${van-id-here}`.
+ */
     
     const vanElements = vans.map(van => (
         <div key={van.id}  className="van-tile">
-            <img src={van.imageUrl} />
+        <Link to={`/vans/${van.id}`} 
+        aria-label={`View details for ${van.name}, priced at $ ${van.price} per day`}
+        >
+        
+            <img src={van.imageUrl} alt={`image of ${van.name}`} />
             <div className="van-info">
-                <h3>{van.name}</h3>
+                <p>{van.name}</p>
                 <p>${van.price}<span>/day</span></p>
             </div>
             <i className={`van-type ${van.type} selected`}>{van.type}</i>
+            </Link>
         </div>
+       
     ))
 
 
