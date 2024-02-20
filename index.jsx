@@ -10,23 +10,14 @@ import Layout from "./src/components/Layout";
 import Dashboard from "./src/pages/Host/Dashboard";
 import Income from "./src/pages/Host/Income";
 import Reviews from "./src/pages/Host/Reviews";
+import HostVans from "./src/pages/Host/HostVans";
+import HostVanDetail from "./src/pages/Host/HostVanDetail";
 import HostLayout from "./src/components/HostLayout";
 
 import "./src/pages/server"
 
-/**
- * Challenge:
- * 1. Add a "Host" link to the Navbar that takes you to the "/host" path
- * 2. Create the following components in the pages/Host folder:
- *    a. Dashboard ("/host")
- *    b. Income ("/host/income")
- *    c. Reviews ("/host/reviews")
- *    These components can just have an h1 for now that says, e.g.
- *    "Host Dashboard here".
- * 3. Set up routes for each of these pages in the Routes below. FOR NOW,
- *    don't worry about nesting anything, you can just put them on the same
- *    level as the "/vans", etc. routes below.
- */
+
+
 
 
 function App(){
@@ -46,17 +37,58 @@ function App(){
               <Route path="host" element={<HostLayout/>} >
                <Route index element={<Dashboard/>} />
                <Route path="income" element={<Income/>} />
+               <Route path="vans" element={<HostVans/>} />
+                   <Route path="vans/:id" element={<HostVanDetail/>} />
+                   
                <Route path="reviews" element={<Reviews/>} />
              </Route>
         
          </Route>
       </Routes>
     
-    <footer className="footer">&#169;2024  #VANLIFE</footer>
+
     </BrowserRouter>
  )
 }
 
+
+
+
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+   <App/>
+);
+
+
+  /**
+   * Challenge: add the /host/vans and /host/vans/:id routes, as well
+   * as the "Vans" link in the Host navbar.
+   * 
+   * For now, just create the stubbed-out version of the pages (i.e.
+   * components that just render an <h1>). Don't worry about adding
+   * navigation from /host/vans to /host/vans/:id yet - the link to
+   * /host/vans is enough for now.
+   * 
+   * When deciding whether or not to use nested routes, keep in mind
+   * what will/won't be shared between these two pages. See the Figma
+   * design file (or the screenshots) to help guide your choice.
+   */
+
+
+
+/**
+ * Challenge:
+ * 1. Add a "Host" link to the Navbar that takes you to the "/host" path
+ * 2. Create the following components in the pages/Host folder:
+ *    a. Dashboard ("/host")
+ *    b. Income ("/host/income")
+ *    c. Reviews ("/host/reviews")
+ *    These components can just have an h1 for now that says, e.g.
+ *    "Host Dashboard here".
+ * 3. Set up routes for each of these pages in the Routes below. FOR NOW,
+ *    don't worry about nesting anything, you can just put them on the same
+ *    level as the "/vans", etc. routes below.
+ */
 
  /**
    * Challenge: Make the HostLayout component!
@@ -85,10 +117,6 @@ function App(){
           */
 
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <App/>
-);
 
 
 /**
