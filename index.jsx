@@ -11,7 +11,11 @@ import Dashboard from "./src/pages/Host/Dashboard";
 import Income from "./src/pages/Host/Income";
 import Reviews from "./src/pages/Host/Reviews";
 import HostVans from "./src/pages/Host/HostVans";
+
 import HostVanDetail from "./src/pages/Host/HostVanDetail";
+import HostVanInfo from "./src/pages/Host/HostVanInfo";
+import HostVanPhotos from "./src/pages/Host/HostVanPhotos";
+import HostVanPricing from "./src/pages/Host/HostVanPricing";
 import HostLayout from "./src/components/HostLayout";
 
 import "./src/pages/server"
@@ -38,9 +42,13 @@ function App(){
                <Route index element={<Dashboard/>} />
                <Route path="income" element={<Income/>} />
                <Route path="vans" element={<HostVans/>} />
-                   <Route path="vans/:id" element={<HostVanDetail/>} />
-                   
                <Route path="reviews" element={<Reviews/>} />
+               <Route path="vans/:id" element={<HostVanDetail/>} >
+                        
+                      <Route index element={<HostVanInfo/>} />
+                      <Route path="photos" element={<HostVanPhotos/>} />
+                      <Route path="pricing" element={<HostVanPricing/>} />
+                   </Route> 
              </Route>
         
          </Route>
@@ -58,6 +66,28 @@ function App(){
 ReactDOM.createRoot(document.getElementById('root')).render(
    <App/>
 );
+
+
+
+
+ /**
+   * Challenge: Add the routes necessary so we can access
+   * /host/vans/:id/pricing and /host/vans/:id/photos.
+   * 
+   * Add stubbed-out components in separate files for
+   * these routes (e.g. <h2>Pricing view here</h2>). I already
+   * made the `HostVanInfo.jsx`, `HostVanPricing.jsx` and
+   * `HostVanPhotos.jsx` files for you, but they're empty.
+   * 
+   * Don't forget: you'll need to use a special tool from
+   * React Router so we can keep the top info (and 
+   * eventually the navbar we build) on the page while going
+   * from nested route to nested route. This will require some
+   * slight changes to HostVanDetail.jsx
+   * 
+   * Since we don't have the navbar yet, you can test them
+   * by manually navigating to e.g. /host/vans/1/pricing.
+   */
 
 
   /**

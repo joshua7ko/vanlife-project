@@ -1,5 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet, NavLink, useOutletContext } from "react-router-dom";
+
 
 
    /**
@@ -15,6 +16,13 @@ import { useParams } from "react-router-dom";
    
 export default function HostVanDetail(){
 
+    const activeStyles = {
+        fontWeight: "bold",
+        textDecoration: "underline",
+        color: "#161616"
+    }
+
+
     const { id } = useParams()
 
    const [currentVan, setCurrentVan] = React.useState(null)
@@ -26,18 +34,84 @@ export default function HostVanDetail(){
    }, [])
 
   
+function child(){
+ const [currentVan, setCurrentVan] = useOutletContext();
+}
+
+
    if(!currentVan){
    return  <h1>Loading...</h1>
    }
   
     return(
-        <div>
-            <img src={currentVan.imageUrl} width={150} />
-            <h2>{currentVan.name}</h2>
-            <p>{currentVan.price}</p>
-            <p>{currentVan.type}</p>
-            
+ 
+        <section>
+        <Link
+            to=".."
+            relative="path"
+            className="back-button"
+        >&larr; <span>Back to all vans</span></Link>
+
+        <div className="host-van-detail-layout-container">
+            <div className="host-van-detail">
+                <img src={currentVan.imageUrl} />
+                <div className="host-van-detail-info-text">
+                    <i
+                        className={`van-type van-type-${currentVan.type}`}
+                    >
+                        {currentVan.type}
+                    </i>
+                    <h3>{currentVan.name}</h3>
+                    <h4>${currentVan.price}/day</h4>
+                </div>
+            </div>
+            <nav className="host-van-detail-nav">
+                <NavLink to="." end style={({ isActive }) => isActive ? activeStyles : null} >Details</NavLink>
+                <NavLink to="pricing"  style={({ isActive }) => isActive ? activeStyles : null}>Pricing</NavLink>
+                <NavLink to="photos"  style={({ isActive }) => isActive ? activeStyles : null}>Photos</NavLink>
+                </nav>
+            <Outlet context={{ currentVan }}/>
         </div>
+    </section>
+
+            
+        
     )
   
 }  
+
+
+
+/**
+ * Challenge: check out the docs linked in the slide, and see if you
+ * can implement the Outlet Context feature it talks about.
+ * 
+ * Part of this challenge will require you to (finally) build out those
+ * nested components. Again, if you don't need CSS practice, you can
+ * skip the styling part, and I'll handle that for you.
+ */
+
+
+/**
+ * Challenge: Add the links for the navbar! Check the 
+ * Figma design slide to see what the text is.
+ * 
+ * Make it so the link style changes to more clearly
+ * indicate which route we're currently on.
+ * 
+ * Remember, "Details" leads to /host/vans/:id, not
+ * /host/vans/:id/details, so you'll need to employ a
+ * trick we recently learned for that to work.
+ */
+
+ /**
+     * Mini challenge: Try to make it so the "Back to all vans"
+     * Link takes people BACK one route.
+     * 
+     * MAJOR HINT: we just talked about how `cd .` and `cd ..`
+     * work in a terminal, and mentioned how `.` represents
+     * the current route
+     * 
+     * MAJOR CAVEAT: it's not going to do what you think it'll
+     * do, but we'll learn why and see an easy fix 🤭
+     */
