@@ -1,34 +1,58 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom"
-
-
-  /**
-     * Challenge: access the search params in this component
-     * 1. Using the hook from react-router-dom, set a variable
-     *    called `searchParams`
-     * 2. Save the value of the `type` parameter (from the
-     *    `searchParams` object) to a variable called `typeFilter`
-     * 3. Log the value of the `typeFilter` to the console
-     */
+import { getVans } from "../api";
 
 
   
 export default function Vans(){
-
     const [searchParams, setSearchParams] =useSearchParams();
+
+    const[vans, setVans] = React.useState([])
+    const[loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(null)
+
+   
     const typeFilter = searchParams.get("type")
-    console.log(typeFilter); 
+    // console.log(typeFilter); 
      
-    console.log(searchParams.toString())
+    // console.log(searchParams.toString())
     
  
 
-    const[vans, setVans] = React.useState([])
+   
     
     React.useEffect(() => {
-       fetch("/api/vans")
-          .then(res => res.json())
-          .then(data => setVans(data.vans))
+
+        async function loadVans() {
+            setLoading(true)
+            try {
+                const data = await getVans()
+                setVans(data)
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        loadVans()
+        
+        // async function loadVans() {
+        //     setLoading(true)
+        //     try{
+        //     const data = await getVans()
+        //     setVans(data)
+        //     } 
+        //     catch(err){
+        //      setError(err)
+        //     } 
+        //     finally{
+        //     setLoading(false)
+        //     }
+        // }
+        //   loadVans()
+
+  
     }, [])
 
 
@@ -64,13 +88,14 @@ export default function Vans(){
     // <Link className="van-type clear-filters" to=".">Clear</Link>
 
 
-     /**
-     * Challenges:
-     * 1. Conditionally render the "Clear filter" button only if
-     *    there's a `type` filter currently applied in the search params
-     * 
-     * 2. TBA
-     */
+   
+    if(loading){
+       return <h1>Loading...</h1>
+    }
+
+   if(error){
+    return<h1>there was an error : {error.message}</h1>
+   }
 
 
     return (
@@ -99,6 +124,27 @@ export default function Vans(){
     )
 }
 
+
+
+
+
+  /**
+     * Challenge: access the search params in this component
+     * 1. Using the hook from react-router-dom, set a variable
+     *    called `searchParams`
+     * 2. Save the value of the `type` parameter (from the
+     *    `searchParams` object) to a variable called `typeFilter`
+     * 3. Log the value of the `typeFilter` to the console
+     */
+
+
+  /**
+     * Challenges:
+     * 1. Conditionally render the "Clear filter" button only if
+     *    there's a `type` filter currently applied in the search params
+     * 
+     * 2. TBA
+     */
 
  /**
      * Challenge: add links to filter the vans by type. Use a hard-coded
