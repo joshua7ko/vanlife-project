@@ -90,11 +90,11 @@ export default function Vans(){
 
    
     if(loading){
-       return <h1>Loading...</h1>
+       return <h1 aria-live="polite">Loading...</h1>
     }
 
    if(error){
-    return<h1>there was an error : {error.message}</h1>
+    return<h1 aria-live="assertive">there was an error : {error.message}</h1>
    }
 
 
