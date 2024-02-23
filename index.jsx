@@ -1,10 +1,15 @@
 import React from "react";
 import ReactDOM  from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, RouterProvider, 
+        Routes,
+        Route,  
+        Link,
+        createBrowserRouter,
+        createRoutesFromElements } from "react-router-dom";
 import Home from "./src/pages/Home";
 import About from "./src/pages/About";
 
-import Vans from "./src/pages/Vans/Vans";
+import Vans, {loader as vansPageLoader} from "./src/pages/Vans/Vans";
 import VanDetail from "./src/pages/Vans/VanDetail";
 import Layout from "./src/components/Layout";
 import Dashboard from "./src/pages/Host/Dashboard";
@@ -18,45 +23,82 @@ import HostVanPhotos from "./src/pages/Host/HostVanPhotos";
 import HostVanPricing from "./src/pages/Host/HostVanPricing";
 import HostLayout from "./src/components/HostLayout";
 import NotFound from "./src/pages/NotFound";
+import Error from "./src/components/Error";
+
 
 import "./src/pages/server"
+
+
+/**
+ * Challenge: Change our router to a newer one that supports the
+ * data APIs!
+ * 
+ * 1. You'll need to import: RouterProvider, createBrowserRouter,
+ *    and createRoutesFromElements
+ * 2. Create a `router` variable and use the functions you just 
+ *    imported to create a new browserRouter
+ * 3. Pass that router variable to the `router` prop on
+ *    <RouterProvider />. It should end up being the only thing
+ *    the App component renders.
+ * 
+ */
+
+
+
+/**
+ * Challenge: Add an errorElement to the vans Route.
+ * 
+ * 1. This time, instead of just putting in an <h1> directly,
+ *    you should make a new Error.jsx component in the components
+ *    folder. (We'll learn something new about this soon). For now,
+ *    that new component can just render the <h1>An error occurred!</h1>
+ * 2. Import and use that new Error component as the errorElement
+ *    on the /vans route.
+ */
+
+const router = createBrowserRouter(createRoutesFromElements(
+   <Route path="/" element={<Layout/>  }>
+   <Route index element={<Home/>} />
+
+  <Route path="about" element={<About/>} />
+  <Route path ="vans" element={<Vans/>} 
+         loader={vansPageLoader} 
+         errorElement={<Error />}
+         />
+        <Route path ="vans/:id" element={<VanDetail/>} />
+
+
+ <Route path="host" element={<HostLayout/>} >
+  <Route index element={<Dashboard/>} />
+  <Route path="income" element={<Income/>} />
+  <Route path="vans" element={<HostVans/>} />
+  <Route path="reviews" element={<Reviews/>} />
+  <Route path="vans/:id" element={<HostVanDetail/>} >
+           
+         <Route index element={<HostVanInfo/>} />
+         <Route path="photos" element={<HostVanPhotos/>} />
+         <Route path="pricing" element={<HostVanPricing/>} />
+      </Route> 
+</Route>
+<Route path="*" element={<NotFound/>}/>
+</Route>
+))
 
 
 
 
 
 function App(){
- return (
-    <BrowserRouter>
- 
-    
-       <Routes>
-        <Route path="/" element={<Layout/>}>
-                <Route index element={<Home/>} />
-        
-               <Route path="about" element={<About/>} />
-               <Route path ="vans" element={<Vans/>} />
-                     <Route path ="vans/:id" element={<VanDetail/>} />
-        
-        
-              <Route path="host" element={<HostLayout/>} >
-               <Route index element={<Dashboard/>} />
-               <Route path="income" element={<Income/>} />
-               <Route path="vans" element={<HostVans/>} />
-               <Route path="reviews" element={<Reviews/>} />
-               <Route path="vans/:id" element={<HostVanDetail/>} >
-                        
-                      <Route index element={<HostVanInfo/>} />
-                      <Route path="photos" element={<HostVanPhotos/>} />
-                      <Route path="pricing" element={<HostVanPricing/>} />
-                   </Route> 
-             </Route>
-             <Route path="*" element={<NotFound/>}/>
-         </Route>
-      </Routes>
-    
 
-    </BrowserRouter>
+
+ return (
+    <RouterProvider router={router} />
+
+
+   //  <BrowserRouter>
+   //     <Routes>
+   //    </Routes>
+   //  </BrowserRouter>
  )
 }
 

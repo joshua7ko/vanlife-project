@@ -1,14 +1,23 @@
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom"
+import { Link, useSearchParams, useLoaderData } from "react-router-dom"
 import { getVans } from "../api";
+
+export function loader(){
+    return getVans()
+   
+   
+}
+
 
 
   
 export default function Vans(){
+    const vans = useLoaderData()
+    
     const [searchParams, setSearchParams] =useSearchParams();
 
-    const[vans, setVans] = React.useState([])
-    const[loading, setLoading] = React.useState(false)
+    // const[vans, setVans] = React.useState([])
+    // const[loading, setLoading] = React.useState(false)
     const [error, setError] = React.useState(null)
 
    
@@ -18,42 +27,29 @@ export default function Vans(){
     // console.log(searchParams.toString())
     
  
-
+   
    
     
-    React.useEffect(() => {
+    // React.useEffect(() => {
 
-        async function loadVans() {
-            setLoading(true)
-            try {
-                const data = await getVans()
-                setVans(data)
-            } catch (err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
+    //     async function loadVans() {
+    //         setLoading(true)
+    //         try {
+    //             const data = await getVans()
+    //             setVans(data)
+    //         } catch (err) {
+    //             setError(err)
+    //         } finally {
+    //             setLoading(false)
+    //         }
+    //     }
 
-        loadVans()
+    //     loadVans()
         
-        // async function loadVans() {
-        //     setLoading(true)
-        //     try{
-        //     const data = await getVans()
-        //     setVans(data)
-        //     } 
-        //     catch(err){
-        //      setError(err)
-        //     } 
-        //     finally{
-        //     setLoading(false)
-        //     }
-        // }
-        //   loadVans()
+        
 
   
-    }, [])
+    // }, [])
 
 
     const displayedVans = typeFilter
@@ -89,9 +85,9 @@ export default function Vans(){
 
 
    
-    if(loading){
-       return <h1 aria-live="polite">Loading...</h1>
-    }
+    // if(loading){
+    //    return <h1 aria-live="polite">Loading...</h1>
+    // }
 
    if(error){
     return<h1 aria-live="assertive">there was an error : {error.message}</h1>
@@ -125,6 +121,33 @@ export default function Vans(){
 }
 
 
+
+/**
+ * Challenge:
+ * 1. Use the useLoaderData hook to pull in the data from the loader
+ *    function and console.log it.
+ * 2. Replace the string return from the loader, and instead call
+ *    the getVans function and return the result
+ */
+
+/**
+     * Challenge: Use the vans data that came in from useLoaderData
+     * instead of the state and useEffect
+     * 1. Comment out the entire useEffect block
+     * 2. Make whatever other changes you need so it all works
+     *    again
+     */
+
+
+
+/**
+ * Challenge:
+ * 1. Export a loader function from this file. Have that loader
+ *    function simply return the string "Vans data goes here"
+ * 2. Import that function in the index.jsx file, and set it as
+ *    the value for the `loader` prop on the Route that controls
+ *    this page.
+ */
 
 
 
