@@ -1,25 +1,33 @@
 import React from "react";
-import { useParams, Link, useLocation} from "react-router-dom";
+import { useParams, Link, useLocation, useLoaderData} from "react-router-dom";
+import { getVans } from "../api";
+
+
+export function loader({params}){
+    return getVans(params.id)
+}
 
 export default function VanDetail(){
-    const params = useParams()
+    // const params = useParams()
     const location = useLocation()
     // console.log(location)
+
+    const van = useLoaderData()
 
    
     const search = location.state && location.state.search || ""
     const type = location.state?.type || "all"
 
 
+//old code
 
+    // const [van, setVan] = React.useState(null)
 
-    const [van, setVan] = React.useState(null)
-
-      React.useEffect(() =>{
-        fetch(`/api/vans/${params.id}`)
-             .then(res => res.json())
-             .then(data => setVan(data.vans))
-      },[params.id])
+    //   React.useEffect(() =>{
+    //     fetch(`/api/vans/${params.id}`)
+    //          .then(res => res.json())
+    //          .then(data => setVan(data.vans))
+    //   },[params.id])
 
        /**
      * Challenge: When a filter is applied, change the text of
@@ -39,7 +47,8 @@ export default function VanDetail(){
             relative="path"
             className="back-button"
         >&larr; <span>{`Back to ${type} vans`}</span></Link>
-        {van ? (
+        {/* {van ?  */}
+        (
             <div className="van-detail">
                 <img src={van.imageUrl} />
                 <i className={`van-type ${van.type} selected`}>{van.type}</i>
@@ -48,7 +57,7 @@ export default function VanDetail(){
                 <p>{van.description}</p>
                 <button className="link-button">Rent this van</button>
             </div>
-        ) : <h2>Loading...</h2>}
+        {/* ) : <h2>Loading...</h2>} */}
     </div>
     )
 }

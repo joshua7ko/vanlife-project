@@ -1,5 +1,10 @@
 import React from "react";
-import { useParams, Link, Outlet, NavLink, useOutletContext } from "react-router-dom";
+import { useParams, Link, Outlet, NavLink, useOutletContext, useLoaderData } from "react-router-dom";
+import { getHostVans } from "../api";
+
+
+
+
 
 
 
@@ -13,6 +18,17 @@ import { useParams, Link, Outlet, NavLink, useOutletContext } from "react-router
      * and display the van image, name, price, type
      */
 
+
+   /**
+ * Challenge: move the data fetching from the useEffect
+ * into a loader function instead. ALSO, do the same for
+ * the VanDetail.jsx file as well, since that is also 
+ * fetching data in a useEffect 😬
+ */
+
+export function loader({params}){
+    return getHostVans(params.id)
+}   
    
 export default function HostVanDetail(){
 
@@ -22,16 +38,16 @@ export default function HostVanDetail(){
         color: "#161616"
     }
 
+const currentVan = useLoaderData()
+    // const { id } = useParams() 
 
-    const { id } = useParams()
+//    const [currentVan, setCurrentVan] = React.useState(null)
 
-   const [currentVan, setCurrentVan] = React.useState(null)
-
-   React.useEffect(() => {
-     fetch(`/api/host/vans/${id}`)
-        .then(res => res.json())
-        .then(data => setCurrentVan(data.vans))
-   }, [])
+//    React.useEffect(() => {
+//      fetch(`/api/host/vans/${id}`)
+//         .then(res => res.json())
+//         .then(data => setCurrentVan(data.vans))
+//    }, [])
 
   
 function child(){
@@ -39,9 +55,9 @@ function child(){
 }
 
 
-   if(!currentVan){
-   return  <h1>Loading...</h1>
-   }
+//    if(!currentVan){
+//    return  <h1>Loading...</h1>
+//    }
   
     return(
  
