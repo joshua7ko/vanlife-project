@@ -8,6 +8,7 @@ import { BrowserRouter, RouterProvider,
         createRoutesFromElements } from "react-router-dom";
 import Home from "./src/pages/Home";
 import About from "./src/pages/About";
+import Login from "./src/pages/Login";
 
 import Vans, {loader as vansPageLoader} from "./src/pages/Vans/Vans";
 import VanDetail from "./src/pages/Vans/VanDetail";
@@ -61,6 +62,11 @@ const router = createBrowserRouter(createRoutesFromElements(
    <Route index element={<Home/>} />
 
   <Route path="about" element={<About/>} />
+  <Route
+      path="login"
+      element={<Login />}
+    />
+
   <Route path ="vans" element={<Vans/>} 
          loader={vansPageLoader} 
          errorElement={<Error />}
