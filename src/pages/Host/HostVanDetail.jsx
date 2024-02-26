@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link, Outlet, NavLink, useOutletContext, useLoaderData } from "react-router-dom";
-import { getHostVans } from "../api";
+import { getHostVans } from "../../../api";
+import { requireAuth } from "../../../utils";
 
 
 
@@ -26,22 +27,25 @@ import { getHostVans } from "../api";
  * fetching data in a useEffect 😬
  */
 
-export function loader({params}){
+export async function loader({params}){
+    await requireAuth()
     return getHostVans(params.id)
 }   
    
 export default function HostVanDetail(){
+    
+    const currentVan = useLoaderData()
 
     const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
         color: "#161616"
     }
+    // const [currentVan, setCurrentVan] = React.useState(null)
 
-const currentVan = useLoaderData()
     // const { id } = useParams() 
 
-//    const [currentVan, setCurrentVan] = React.useState(null)
+
 
 //    React.useEffect(() => {
 //      fetch(`/api/host/vans/${id}`)
@@ -50,9 +54,9 @@ const currentVan = useLoaderData()
 //    }, [])
 
   
-function child(){
- const [currentVan, setCurrentVan] = useOutletContext();
-}
+// function child(){
+//  const [currentVan, setCurrentVan] = useOutletContext();
+// }
 
 
 //    if(!currentVan){
