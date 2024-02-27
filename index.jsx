@@ -6,7 +6,7 @@ import {   Route,
         createRoutesFromElements } from "react-router-dom";
 import Home from "./src/pages/Home";
 import About from "./src/pages/About";
-import Login from "./src/pages/Login";
+import Login, {loader as loginLoader} from "./src/pages/Login";
 
 import Vans, {loader as vansPageLoader} from "./src/pages/Vans/Vans";
 import VanDetail, {loader as VanDetailLoader} from "./src/pages/Vans/VanDetail";
@@ -27,6 +27,7 @@ import { requireAuth } from "./utils";
 
 
 import "./server"
+
 
 
 /**
@@ -64,6 +65,7 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route
       path="login"
       element={<Login />}
+      loader={loginLoader}
     />
 
   <Route path ="vans" element={<Vans/>} 
