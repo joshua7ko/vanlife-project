@@ -6,7 +6,7 @@ import {   Route,
         createRoutesFromElements } from "react-router-dom";
 import Home from "./src/pages/Home";
 import About from "./src/pages/About";
-import Login, {loader as loginLoader} from "./src/pages/Login";
+import Login, {loader as loginLoader, action as loginAction} from "./src/pages/Login";
 
 import Vans, {loader as vansPageLoader} from "./src/pages/Vans/Vans";
 import VanDetail, {loader as VanDetailLoader} from "./src/pages/Vans/VanDetail";
@@ -24,7 +24,7 @@ import HostLayout from "./src/components/HostLayout";
 import NotFound from "./src/pages/NotFound";
 import Error from "./src/components/Error";
 import { requireAuth } from "./utils";
-
+// localStorage.removeItem("loggedin") 
 
 import "./server"
 
@@ -66,6 +66,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       path="login"
       element={<Login />}
       loader={loginLoader}
+      action={loginAction}
     />
 
   <Route path ="vans" element={<Vans/>} 
