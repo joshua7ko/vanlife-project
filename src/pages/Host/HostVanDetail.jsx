@@ -27,8 +27,8 @@ import { requireAuth } from "../../../utils";
  * fetching data in a useEffect 😬
  */
 
-export async function loader({params}){
-    await requireAuth()
+export async function loader({params, request}){
+    await requireAuth(request)
     return getHostVans(params.id)
 }   
    
