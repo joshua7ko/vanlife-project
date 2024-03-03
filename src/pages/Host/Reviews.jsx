@@ -1,4 +1,5 @@
 import React from "react"
+import reviewImg from "/src/assets/reviews-graph.png"
 import { BsStarFill } from "react-icons/bs"
 
 export default function Reviews() {
@@ -29,7 +30,7 @@ export default function Reviews() {
             </div>
             <img
                 className="graph"
-                src="/src/assets/reviews-graph.png"
+                src={reviewImg}
                 alt="Review graph"
             />
             <h3>Reviews (2)</h3>
