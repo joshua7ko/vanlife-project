@@ -41,6 +41,8 @@ body::-webkit-scrollbar {
       background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,126,131,1) 36%, rgba(0,212,255,1) 100%);;
       margin-top: 25px;
       border-radius: 30px 30px 0px 0px;
+      margin-bottom: 5px;
+      border: 2px solid black;
       
       
   }
@@ -106,13 +108,15 @@ body::-webkit-scrollbar {
 }
 
   .footer {
-    background-color: #2c2a2a;
+    background:
+     linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 74%, rgba(255,255,255,1) 100%);
     color: white;
     font-weight: bold;
     padding: 20px 30px;
     border-radius: 0 0 20px 20px;
     text-align: center;
     margin-top: 10px;
+    border: 2px solid black;
 
   }
   
