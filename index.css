@@ -20,6 +20,7 @@ html, body {
         flex-direction: column;
         margin-left: 50px;
         margin-right: 50px;
+        
     }
     
 
@@ -31,6 +32,7 @@ body::-webkit-scrollbar {
   body {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    
   }
   
   header {
@@ -71,7 +73,7 @@ body::-webkit-scrollbar {
   }
   
   header a:hover {
-      color: #161616;
+      color: #f6f921;
       text-decoration: underline;
   }
   
@@ -90,6 +92,7 @@ body::-webkit-scrollbar {
   
   .link-button:hover {
       transform: translate(1px, 1px);
+     
   }
 
 
@@ -102,10 +105,14 @@ body::-webkit-scrollbar {
 .login-icon {
     flex-direction: column;
     vertical-align:middle;
-    
-
      
 }
+
+.login-icon:hover {
+    filter: drop-shadow(4px 3px 0px  #f6f921 ) ;
+}
+
+
 
   .footer {
     background:
@@ -163,70 +170,13 @@ body::-webkit-scrollbar {
   }
   
   
-  /*** ABOUT PAGE ***/
-
-  /* .about-page-container {
-     display: flex; 
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-  }
-
-
-  .about-hero-image {
-      max-width: 100%;
-      height:30%;
-      display: flex;
-      top: 50%;
-      left: 50%;
-      
-      
-  }
-
-  
-  
-  .about-page-content {
-      padding-inline: 23px;
-      color: #161616;
-      margin-bottom: 55px;
-  }
-  
-  .about-page-content h1 {
-      line-height: 38px;
-  }
-  
-  .about-page-content p {
-      line-height: 22px;
-  }
-  
-  .about-page-cta {
-      background-color: #FFCC8D;
-      color: #161616;
-      padding-inline: 32px;
-      padding-bottom: 32px;
-      margin-inline: 27px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-  }
-  
-  .about-page-cta h2 {
-      margin: 0;
-      padding-block: 37px;
-  }
-  
-  .about-page-cta .link-button {
-      background-color: #161616;
-      color: white;
-      border-radius: 10px;
-  } */
-
-
 
   .about-page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    background: linear-gradient(0deg, rgba(34,193,195,0.1) 0%, rgba(3,9,28,0.8) 100%);
   }
   
   .about-hero-image {
@@ -248,8 +198,9 @@ body::-webkit-scrollbar {
   
   .about-page-content p {
     font-size: 16px;
-    color: #666;
+    color: #191818;
     line-height: 1.5;
+    font-weight: 700;
   }
   
   .about-page-cta {
@@ -287,7 +238,9 @@ body::-webkit-scrollbar {
 
   /*** VAN PAGES ***/
   .van-list-container {
-    padding-inline: 23px
+    padding-inline: 23px;
+    
+    
 }
 
 .van-list-filter-buttons {
@@ -876,3 +829,71 @@ img.graph {
     color: #ff8c38;
     margin-right: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+  /*** ABOUT PAGE ***/
+
+  /* .about-page-container {
+     display: flex; 
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+  }
+
+
+  .about-hero-image {
+      max-width: 100%;
+      height:30%;
+      display: flex;
+      top: 50%;
+      left: 50%;
+      
+      
+  }
+
+  
+  
+  .about-page-content {
+      padding-inline: 23px;
+      color: #161616;
+      margin-bottom: 55px;
+  }
+  
+  .about-page-content h1 {
+      line-height: 38px;
+  }
+  
+  .about-page-content p {
+      line-height: 22px;
+  }
+  
+  .about-page-cta {
+      background-color: #FFCC8D;
+      color: #161616;
+      padding-inline: 32px;
+      padding-bottom: 32px;
+      margin-inline: 27px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+  }
+  
+  .about-page-cta h2 {
+      margin: 0;
+      padding-block: 37px;
+  }
+  
+  .about-page-cta .link-button {
+      background-color: #161616;
+      color: white;
+      border-radius: 10px;
+  } */
