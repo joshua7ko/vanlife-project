@@ -157,7 +157,8 @@ export default function Login() {
             {errorMessage && <h3 className="red">{errorMessage}</h3>}
             <Form method="post" className="login-form" 
             replace >
-        
+                 <h5>user: abc@d.com <span> || </span> pwd : ab123</h5>
+                 
                 <input
                     name="email"
                     type="email"
