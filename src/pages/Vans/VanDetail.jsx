@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link, useLocation, useLoaderData} from "react-router-dom";
+import { useParams, Link, useLocation, useLoaderData, defer, Await} from "react-router-dom";
 import { getVans } from "../../../api";
 
 
