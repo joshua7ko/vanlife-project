@@ -183,6 +183,10 @@ body::-webkit-scrollbar {
     width: 100%;
     max-width: 800px;
     margin-bottom: 20px;
+    box-shadow:5px 5px 10px #37c7de,
+    5px 5px 10px #37c7de,
+    5px 5px 10px #37c7de,
+    5px 5px 10px #37c7de;
   }
   
   .about-page-content {
