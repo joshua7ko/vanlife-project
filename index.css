@@ -183,10 +183,11 @@ body::-webkit-scrollbar {
     width: 100%;
     max-width: 800px;
     margin-bottom: 20px;
-    box-shadow:5px 5px 10px #37c7de,
-    5px 5px 10px #37c7de,
-    5px 5px 10px #37c7de,
-    5px 5px 10px #37c7de;
+    border:2px solid rgb(255, 255, 255);
+    box-shadow:0px 0px 10px #37c7de,
+    0px 0px 10px #37c7de,
+    0px 0px 10px #37c7de,
+    0px 0px 10px #37c7de;
   }
   
   .about-page-content {
@@ -237,7 +238,13 @@ body::-webkit-scrollbar {
   .link-button:hover {
     background-color: #0056b3;
   }
-
+  
+  .link-button:active {
+    box-shadow:0px 0px 10px #000000,
+    0px 0px 10px #000000,
+    0px 0px 10px #000000,
+    0px 0px 10px #000000;
+  }
 
 
   /*** VAN PAGES ***/
