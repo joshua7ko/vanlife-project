@@ -116,7 +116,7 @@ body::-webkit-scrollbar {
 
   .footer {
     background:
-     linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 74%, rgba(255,255,255,1) 100%);
+     linear-gradient(90deg, rgb(5, 2, 61) 0%, rgba(0,0,0,1) 74%, rgb(230, 238, 4) 100%);
     color: white;
     font-weight: bold;
     padding: 20px 30px;
@@ -255,13 +255,19 @@ body::-webkit-scrollbar {
 }
 
 .van-list-filter-buttons {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
+    padding: 10px;
+    box-shadow:  0px 0px 10px black;
+    
 }
 
 .van-list-filter-buttons > a {
     margin-right: 15px;
+    border:1px solid black;
+  
 }
+
 
 .van-list {
     display: grid;
