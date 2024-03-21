@@ -259,6 +259,7 @@ body::-webkit-scrollbar {
     flex-wrap: wrap;
     padding: 10px;
     box-shadow:  0px 0px 10px black;
+    border-radius: 20px;
     
 }
 
@@ -405,7 +406,11 @@ i[class*='van-type-'] {
 }
 
 .host-nav {
-    display: flex;
+    margin: 10px 0px 10px 20px;
+    display: inline-flex;
+    padding: 10px;
+    box-shadow:  0px 0px 10px black;
+    border-radius: 20px;
 }
 
 .host-nav a {
@@ -490,9 +495,17 @@ i[class*='van-type-'] {
 
 
 .host-van-detail-nav {
-    display: flex;
+    display: inline-flex;
     margin-block: 25px;
+    padding: 10px;
+    box-shadow:  0px 0px 10px black;
+    border-radius: 20px;
+    
+
 }
+
+
+
 
 .host-van-detail-nav a {
     text-decoration: none;
@@ -510,9 +523,10 @@ i[class*='van-type-'] {
 }
 
 .host-van-detail-nav a:hover {
-    color: #161616;
+    /* color: #18151516; */
     text-decoration: underline;
-    font-weight: 700;
+    font-weight: 900;
+    
 }
 
 .host-van-detail-info > h4 {
