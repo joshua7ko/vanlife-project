@@ -162,11 +162,15 @@ body::-webkit-scrollbar {
       font-weight: 700;
       border-radius: 5px;
       cursor: pointer;
-      transition: transform .1s ease-in-out;
+      transition: transform .1s ease-in-out; 
   }
   
   .home-container a:hover {
       transform: translate(1px, 1px);
+      box-shadow: 0 0 10px #fff,
+      0 0 10px #fff,
+      0 0 10px #fff,
+      0 0 10px #fff;
   }
   
   
@@ -286,6 +290,15 @@ body::-webkit-scrollbar {
 .van-tile img {
     max-width: 100%;
     border-radius: 5px;
+}
+
+
+.van-tile img:hover{
+   box-shadow: 0 0 10px #000,
+   0 0 10px #000,
+   0 0 10px #000,
+   0 0 10px #000;
+
 }
 
 .van-list-container button {
